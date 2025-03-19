@@ -71,7 +71,7 @@ scipy==1.15.2
 simplejson==3.20.1
 six==1.17.0
 smmap==5.0.2
-streamlit==1.42.2
+streamlit==1.12.0
 tenacity==9.0.0
 toml==0.10.2
 tomli==2.2.1
