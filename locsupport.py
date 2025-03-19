@@ -11,6 +11,8 @@ from io import BytesIO
 from docx import Document
 from pptx import Presentation
 
+os.system('pip install protobuf==3.20.0')
+
 # 페이지 설정
 st.set_page_config(page_title="엑셀 도구 모음", layout="centered")
 
