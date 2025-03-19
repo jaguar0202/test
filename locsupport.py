@@ -16,7 +16,7 @@ st.set_page_config(page_title="엑셀 도구 모음", layout="centered")
 
 # 사이드바 메뉴
 st.sidebar.title("엑셀 도구 모음")
-page = st.sidebar.radio(" ", ("엑셀 데이터 복사", "엑셀 시트 분할", "단어수 카운터","월간 보고 데이터"))
+page = st.sidebar.radio(" ", ("엑셀 데이터 복사", "엑셀 시트 분할", "단어수 카운터(파일)", "단어수 카운터(웹)", "월간 보고 데이터"))
 
 # 1. 엑셀 데이터 복사
 if page == "엑셀 데이터 복사":
@@ -322,3 +322,22 @@ elif page == "월간 보고 데이터":
             file_name="project_summary.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
+
+# 5. 단어수 카운터
+elif page == "단어수 카운터(웹)":
+    st.title("🔢 단어수 카운터(웹)")
+    st.write("텍스트를 입력하면 띄어쓰기 기준으로 단어 수를 계산합니다.")
+
+    def count_words(text):
+        words = text.split()
+        return len(words)
+
+    if 'word_count' not in st.session_state:
+        st.session_state.word_count = 0
+
+    st.subheader(f"단어 수: {st.session_state.word_count}")
+
+    def update_word_count():
+        st.session_state.word_count = count_words(st.session_state.text_input)
+
+    text_input = st.text_area("텍스트 입력", height=200, key='text_input', on_change=update_word_count)
